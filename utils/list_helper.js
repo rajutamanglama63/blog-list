@@ -18,7 +18,24 @@ const totalLikes = (blogspostlist) => {
   }, 0);
 };
 
+const favoriteBlog = (blogslist) => {
+  let max = 0;
+  for (let i = 0; i < blogslist.length; i++) {
+    if (blogslist[i].likes < max) {
+      max = blogslist[i].likes;
+    }
+  }
+
+  // console.log(max)
+  const myObj = blogspostlist.find((a) => {
+    // console.log(a.likes)
+    return a.likes === max;
+  });
+  // console.log(myObj)
+};
+
 module.exports = {
   dummy,
   totalLikes,
+  favoriteBlog,
 };
