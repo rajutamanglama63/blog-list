@@ -1,0 +1,11 @@
+GET http://localhost:4000/api/blogs/
+
+###
+POST http://localhost:4000/api/blogs/
+content-type: application/json
+
+{
+    "title" : "Science",
+    "likes" : 20,
+    "author" : "Jaru"
+}
