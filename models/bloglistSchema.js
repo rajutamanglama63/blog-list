@@ -3,8 +3,6 @@ const config = require("../utils/config");
 
 const url = config.MONGO_URI;
 
-console.log("MongoDB connection in process...");
-
 mongoose
   .connect(url)
   .then((result) => {
