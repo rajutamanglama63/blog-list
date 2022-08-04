@@ -23,7 +23,7 @@ describe("total likes", () => {
     expect(result).toBe(5);
   });
 
-  test("when list has multiple blog, equals the most likes obj", () => {
+  test("when list has multiple blog, equals total likes all obj", () => {
     const listwithMultipleBlog = [
       {
         _id: "5a422aa71b54a676234d17f8",
@@ -45,5 +45,37 @@ describe("total likes", () => {
     ];
     const result = listHelper.totalLikes(listwithMultipleBlog);
     expect(result).toBe(20);
+  });
+
+  test("show most liked blog as favorite blog", () => {
+    const blogslist = [
+      {
+        _id: "5a422aa71b54a676234d17f8",
+        title: "Go To Statement Considered Harmful",
+        author: "Edsger W. Dijkstra",
+        url: "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
+        likes: 5,
+        __v: 0,
+      },
+
+      {
+        _id: "5a422aa71b54a676234d17f8",
+        title: "Science & Technology",
+        author: "Raju Lama",
+        url: "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
+        likes: 15,
+        __v: 0,
+      },
+    ];
+
+    const result = listHelper.favoriteBlog(blogslist);
+    expect(result).toEqual({
+      _id: "5a422aa71b54a676234d17f8",
+      title: "Science & Technology",
+      author: "Raju Lama",
+      url: "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
+      likes: 15,
+      __v: 0,
+    });
   });
 });
