@@ -36,8 +36,23 @@ const favoriteBlog = (blogslist) => {
   return myObj;
 };
 
+const mostBlogs = (arrOfBlogs) => {
+  let maxBlog = 0;
+  for (let i = 0; i < arrOfBlogs.length; i++) {
+    if (arrOfBlogs[i].blog > maxBlog) {
+      maxBlog = arrOfBlogs[i].blog;
+    }
+  }
+
+  const objWithMostBlog = arrOfBlogs.find((x) => {
+    return x.blog === maxBlog;
+  });
+
+  return objWithMostBlog;
+};
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
+  mostBlogs,
 };
