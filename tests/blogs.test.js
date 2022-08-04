@@ -110,4 +110,36 @@ describe("total likes", () => {
       __v: 0,
     });
   });
+
+  test("return blog post with largest amount of likes", () => {
+    const arrOfBlogs = [
+      {
+        _id: "5a422aa71b54a676234d17f8",
+        title: "Go To Statement Considered Harmful",
+        author: "Edsger W. Dijkstra",
+        blog: 2,
+        likes: 5,
+        __v: 0,
+      },
+
+      {
+        _id: "5a422aa71b54a676234d17f8",
+        title: "Science & Technology",
+        author: "Raju Lama",
+        blog: 8,
+        likes: 15,
+        __v: 0,
+      },
+    ];
+
+    const result = listHelper.mostLikes(arrOfBlogs);
+    expect(result).toEqual({
+      _id: "5a422aa71b54a676234d17f8",
+      title: "Science & Technology",
+      author: "Raju Lama",
+      blog: 8,
+      likes: 15,
+      __v: 0,
+    });
+  });
 });
