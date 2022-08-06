@@ -5,7 +5,7 @@ dotenv.config();
 const PORT = process.env.PORT || 4000;
 
 const MONGO_URI =
-  process.env.NODE_ENV === "tesst"
+  process.env.NODE_ENV === "test"
     ? process.env.TEST_MONGODB_URI
     : process.env.MONGO_URI;
 
