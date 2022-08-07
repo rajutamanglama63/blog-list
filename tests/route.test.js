@@ -23,10 +23,16 @@ const initialBlogs = [
 describe("routing test", () => {
   beforeEach(async () => {
     await Blog.deleteMany({});
+
     let blogObject = new Blog(initialBlogs[0]);
     await blogObject.save();
     blogObject = new Blog(initialBlogs[1]);
     await blogObject.save();
+
+    // ANOTHER METHOD
+    // const blogsObject = initialBlogs.map((eachBlog) => new Blog(eachBlog));
+    // const promiseArr = blogsObject.map((eachBlog) => eachBlog.save());
+    // await Promise.all(promiseArr);
   });
 
   test("get all available blogs", async () => {
@@ -45,5 +51,27 @@ describe("routing test", () => {
       .expect("Content-Type", /application\/json/);
 
     expect(res.body[0].id).toBeDefined();
+  });
+
+  test("create new post", async () => {
+    const newBlog = {
+      author: "Jonaa",
+      blog: 9,
+      likes: 98,
+      title: "Environment",
+    };
+
+    await api
+      .post("/api/blogs")
+      .send(newBlog)
+      .expect(201)
+      .expect("Content-Type", /application\/json/);
+
+    const res = await api.get("api/blogs");
+    const blogTitle = res.body.map((eachBlog) => eachBlog.title);
+
+    expect(res.body).toHaveLength(initialBlogs.length + 1);
+
+    expect(blogTitle).toContain("Environment");
   });
 });
