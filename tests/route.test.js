@@ -1,4 +1,5 @@
 const supertest = require("supertest");
+const mongoose = require("mongoose");
 const app = require("../app");
 const Blog = require("../models/bloglistSchema");
 
@@ -35,5 +36,14 @@ describe("routing test", () => {
       .expect("Content-Type", /application\/json/);
 
     expect(res.body).toHaveLength(initialBlogs.length);
+  });
+
+  test("verify the unique identifier", async () => {
+    const res = await api
+      .get("/api/blogs")
+      .expect(200)
+      .expect("Content-Type", /application\/json/);
+
+    expect(res.body[0].id).toBeDefined();
   });
 });
