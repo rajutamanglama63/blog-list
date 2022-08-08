@@ -8,14 +8,14 @@ const api = supertest(app);
 const initialBlogs = [
   {
     author: "Raju",
-    blog: 6,
+    url: "6.com",
     likes: 89,
     title: "science",
   },
   {
     author: "Sudesh",
-    blog: 6,
-    likes: 89,
+    url: "6.com",
+    likes: 9,
     title: "Grammer",
   },
 ];
@@ -33,7 +33,7 @@ describe("routing test", () => {
     // const blogsObject = initialBlogs.map((eachBlog) => new Blog(eachBlog));
     // const promiseArr = blogsObject.map((eachBlog) => eachBlog.save());
     // await Promise.all(promiseArr);
-  });
+  }, 1000 * 50);
 
   test("get all available blogs", async () => {
     const res = await api
@@ -101,7 +101,7 @@ describe("routing test", () => {
     await api.post("/api/blogs").send(newBlog).expect(400);
   });
 
-  test("delete a single blog post", async () => {
+  test.only("delete a single blog post", async () => {
     const blog = await Blog.find({ title: "Environment" });
 
     await api.delete(`/api/blogs/${blog[0].id}`).expect(204);
@@ -113,13 +113,12 @@ describe("routing test", () => {
     expect(existingBlogsTitle).not.toContain("Environment");
   }, 10000);
 
-  test.only("update the info of an individual blog post", async () => {
+  test("update the info of an individual blog post", async () => {
     const individualBlog = await Blog.find({ title: "Grammer" });
     // console.log(individualBlog);
     const data = {
       title: individualBlog[0].title,
       author: individualBlog[0].author,
-      blog: individualBlog[0].blog,
       url: individualBlog[0].url,
       likes: 70,
     };
