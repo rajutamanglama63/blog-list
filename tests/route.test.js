@@ -102,15 +102,15 @@ describe("routing test", () => {
   });
 
   test.only("delete a single blog post", async () => {
-    const blog = await Blog.find({ title: "Environment" });
-
+    const blog = await Blog.find({ title: "science" });
+    console.log(blog);
     await api.delete(`/api/blogs/${blog[0].id}`).expect(204);
 
     const existingBlogs = await Blog.find();
 
     const existingBlogsTitle = existingBlogs.map((blog) => blog.title);
 
-    expect(existingBlogsTitle).not.toContain("Environment");
+    expect(existingBlogsTitle).not.toContain("science");
   }, 10000);
 
   test("update the info of an individual blog post", async () => {
