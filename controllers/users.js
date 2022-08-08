@@ -17,7 +17,18 @@ userRouter.post("/", async (req, res, next) => {
       password: hassedPassword,
     });
 
+    newUser.save();
     res.status(201).json(newUser);
+  } catch (error) {
+    next(error);
+  }
+});
+
+userRouter.get("/", async (req, res, next) => {
+  try {
+    const allUsers = await User.find();
+
+    res.status(200).json(allUsers);
   } catch (error) {
     next(error);
   }

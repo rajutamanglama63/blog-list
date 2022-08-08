@@ -10,3 +10,12 @@ content-type: application/json
     "author" : "Menu"
 }
 
+###
+POST http://localhost:4000/api/users/
+content-type: application/json
+
+{
+    "name" : "John",
+    "username" : "john@23",
+    "password" : "4949"
+}
