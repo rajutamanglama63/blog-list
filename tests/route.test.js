@@ -67,11 +67,66 @@ describe("routing test", () => {
       .expect(201)
       .expect("Content-Type", /application\/json/);
 
-    const res = await api.get("api/blogs");
+    const res = await api.get("/api/blogs");
     const blogTitle = res.body.map((eachBlog) => eachBlog.title);
 
     expect(res.body).toHaveLength(initialBlogs.length + 1);
 
     expect(blogTitle).toContain("Environment");
+  });
+
+  test("if likes prop is missing, assign it to zero", async () => {
+    const blog = {
+      author: "Jonaa",
+      blog: 9,
+      title: "Environment",
+    };
+    await api
+      .post("/api/blogs")
+      .send(blog)
+      .expect(201)
+      .expect("Content-Type", /application\/json/);
+    const res = await api.get("/api/blogs");
+
+    const likes = res.body.map((eachBlog) => eachBlog.likes);
+
+    expect(likes).toContain(0);
+  });
+
+  test("verify the title and url prop, if not verified respond with 400 bad request", async () => {
+    const newBlog = {
+      author: "Jonathan",
+      blog: 4,
+    };
+    await api.post("/api/blogs").send(newBlog).expect(400);
+  });
+
+  test("delete a single blog post", async () => {
+    const blog = await Blog.find({ title: "Environment" });
+
+    await api.delete(`/api/blogs/${blog[0].id}`).expect(204);
+
+    const existingBlogs = await Blog.find();
+
+    const existingBlogsTitle = existingBlogs.map((blog) => blog.title);
+
+    expect(existingBlogsTitle).not.toContain("Environment");
+  }, 10000);
+
+  test.only("update the info of an individual blog post", async () => {
+    const individualBlog = await Blog.find({ title: "Grammer" });
+    // console.log(individualBlog);
+    const data = {
+      title: individualBlog[0].title,
+      author: individualBlog[0].author,
+      blog: individualBlog[0].blog,
+      url: individualBlog[0].url,
+      likes: 70,
+    };
+    await api.put(`/api/blogs/${individualBlog[0].id}`).send(data).expect(200);
+
+    const updatedBlog = await Blog.find({ title: "Grammer" });
+
+    expect(updatedBlog[0].likes).toBe(70);
   });
 });
