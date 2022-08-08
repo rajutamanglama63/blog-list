@@ -65,10 +65,27 @@ const mostLikes = (arrOfBlogs) => {
 
   return objWithMostBlog;
 };
+
+
+// USER TEST
+
+const User = require("../models/userSchema")
+
+
+const userInDB = () => {
+  const allUsersInDB = await User.find()
+
+  const user = allUsersInDB.map((individualUser) => individualUser.toJSON())
+
+  return user
+}
+
+
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
   mostBlogs,
   mostLikes,
+  userInDB
 };
