@@ -28,6 +28,10 @@ const bloglistSchema = new mongoose.Schema({
   likes: {
     type: Number,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+  },
 });
 
 bloglistSchema.set("toJSON", {
