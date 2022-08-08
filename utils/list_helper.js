@@ -66,20 +66,17 @@ const mostLikes = (arrOfBlogs) => {
   return objWithMostBlog;
 };
 
-
 // USER TEST
 
-const User = require("../models/userSchema")
+const User = require("../models/userSchema");
 
+const userInDB = async () => {
+  const allUsersInDB = await User.find();
 
-const userInDB = () => {
-  const allUsersInDB = await User.find()
+  const user = allUsersInDB.map((individualUser) => individualUser.toJSON());
 
-  const user = allUsersInDB.map((individualUser) => individualUser.toJSON())
-
-  return user
-}
-
+  return user;
+};
 
 module.exports = {
   dummy,
@@ -87,5 +84,5 @@ module.exports = {
   favoriteBlog,
   mostBlogs,
   mostLikes,
-  userInDB
+  userInDB,
 };
