@@ -5,9 +5,11 @@ POST http://localhost:4000/api/blogs/
 content-type: application/json
 
 {
-    "title" : "Technology",
-    "likes" : 30,
-    "author" : "Menu"
+    "title" : "Linux",
+    "likes" : 96,
+    "url": "brand.com",
+    "author" : "Hari Bahadur",
+    "userId": "62ea2a1f65849cf6e7aeaa72"
 }
 
 ###
@@ -15,7 +17,7 @@ POST http://localhost:4000/api/users/
 content-type: application/json
 
 {
-    "name" : "John",
-    "username" : "john@23",
-    "password" : "4949"
+    "name" : "Mona",
+    "username" : "mona@23",
+    "password" : "0000"
 }
