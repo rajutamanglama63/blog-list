@@ -5,10 +5,10 @@ POST http://localhost:4000/api/blogs/
 content-type: application/json
 
 {
-    "title" : "Linux",
-    "likes" : 96,
-    "url": "brand.com",
-    "author" : "Hari Bahadur",
+    "title" : "C++",
+    "likes" : 92,
+    "url": "web.com",
+    "author" : "Mona",
     "userId": "62f14d8c1c98d442675fe5b3"
 }
 
