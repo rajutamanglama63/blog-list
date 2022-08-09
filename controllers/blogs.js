@@ -26,14 +26,14 @@ blogsRouter.get("/", async (req, res, next) => {
 });
 
 // GETTING TOKEN FOR AUTHORIZATION
-const getTokenFrom = (req, res) => {
-  const authorization = req.get("authorization");
-  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
-    return authorization.substring(7);
-  }
+// const getTokenFrom = (req, res) => {
+//   const authorization = req.get("authorization");
+//   if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+//     return authorization.substring(7);
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
 blogsRouter.post("/", async (req, res, next) => {
   try {
@@ -41,8 +41,8 @@ blogsRouter.post("/", async (req, res, next) => {
       req.body.likes = 0;
     }
 
-    const token = getTokenFrom(req);
-    const decodedToken = jwt.verify(token, config.SECRET);
+    // const token = getTokenFrom(req);
+    const decodedToken = jwt.verify(req.token, config.SECRET);
 
     if (!decodedToken.id) {
       return res.status(401).json({ error: "token missing or invalid" });
