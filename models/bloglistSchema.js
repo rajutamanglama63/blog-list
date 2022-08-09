@@ -6,7 +6,7 @@ const url = config.MONGO_URI;
 mongoose
   .connect(url)
   .then((result) => {
-    console.log("MongoDB connection established.");
+    console.log("MongoDB connection established");
   })
   .catch((err) => {
     console.log("err connecting to MongoDB:", err.message);
