@@ -19,6 +19,10 @@ const errorHandler = (err, req, res, next) => {
     return res.status(400).send({ err: "malforamtted id" });
   } else if (err.name === "ValidationError") {
     return res.status(400).json({ err: err.message });
+  } else if (err.name === "JsonWebTokenError") {
+    return res.status(401).json({ err: err.message });
+  } else if (err.name === "TokenExpiredError") {
+    return res.status(401).json({ err: err.message });
   }
 
   next(err);
