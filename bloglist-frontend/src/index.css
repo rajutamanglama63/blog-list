@@ -1,0 +1,19 @@
+.green{
+    color: rgb(99, 171, 99);
+    background-color: rgb(213, 213, 213);
+    border: 2px solid rgb(99, 171, 99);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: larger;
+    
+}
+
+.red{
+    color: red;
+    background-color: rgb(213, 213, 213);
+    border: 2px solid red;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: larger;
+    
+}
