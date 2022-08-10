@@ -1,12 +1,30 @@
 import React, { useState } from "react";
+import loginService from "../services/login";
 
-const Login = () => {
+const Login = ({ setMessage }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
-    console.log("logged in with ", username, password);
+    // console.log("logged in with ", username, password);
+
+    try {
+      const responsedUser = await loginService.login({
+        username,
+        password,
+      });
+
+      setUser(responsedUser);
+      setUsername("");
+      setPassword("");
+    } catch (error) {
+      setMessage("wrong credentials");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    }
   };
   return (
     <div>
