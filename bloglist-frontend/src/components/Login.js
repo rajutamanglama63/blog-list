@@ -17,10 +17,15 @@ const Login = ({ setMessage }) => {
       });
 
       setUser(responsedUser);
+      setMessage("User logged in successfully.");
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
       setUsername("");
       setPassword("");
     } catch (error) {
-      setMessage("wrong credentials");
+      // console.dir(error);
+      setMessage(error.response.data);
       setTimeout(() => {
         setMessage(null);
       }, 3000);
