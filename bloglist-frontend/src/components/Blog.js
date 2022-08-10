@@ -1,7 +1,14 @@
-const Blog = ({blog}) => (
+const Blog = ({ blog, user }) => (
   <div>
-    {blog.title} {blog.author}
-  </div>  
-)
+    {/* {blog.title} {blog.author} */}
+    <p>{user.name} logged in</p>
 
-export default Blog
+    <ul>
+      {user.blogs.map((blog) => (
+        <li key={blog.id}>blog</li>
+      ))}
+    </ul>
+  </div>
+);
+
+export default Blog;

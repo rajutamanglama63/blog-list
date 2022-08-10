@@ -32,7 +32,12 @@ loginRouter.post("/", async (req, res, next) => {
 
     res
       .status(200)
-      .json({ token, username: userExist.username, name: userExist.name });
+      .json({
+        token,
+        username: userExist.username,
+        name: userExist.name,
+        blogs: userExist.blogs,
+      });
   } catch (error) {
     next(error);
   }

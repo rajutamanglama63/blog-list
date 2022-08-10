@@ -14,7 +14,7 @@ const Login = ({ setMessage, setUser }) => {
         username,
         password,
       });
-
+      console.log(responsedUser);
       setUser(responsedUser);
       setMessage("User logged in successfully.");
       setTimeout(() => {

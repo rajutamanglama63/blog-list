@@ -3,12 +3,12 @@ GET http://localhost:4000/api/blogs/
 ###
 POST http://localhost:4000/api/blogs/
 content-type: application/json
-authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbWFudGhhQDIzIiwiaWQiOiI2MmYxYmU1NjRkZmNjYWY1YTBiYTZlNWYiLCJpYXQiOjE2NjAwNDMxMzIsImV4cCI6MTY2MDA0NjczMn0.oD5WIKV7uFlvedyE5aQTLerQOdj3rBel4ckG1xEbOeU
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbWFudGhhQDIzIiwiaWQiOiI2MmYxYmU1NjRkZmNjYWY1YTBiYTZlNWYiLCJpYXQiOjE2NjAxNTA2MzcsImV4cCI6MTY2MDE1NDIzN30.FsvPCkP-eWGezOVSkOi_x2OuNx79OMIBbxHhD_gzFw8
 
 {
-    "title" : "Flutter",
-    "likes" : 92,
-    "url": "mob.com",
+    "title" : "Mern",
+    "likes" : 54,
+    "url": "webdev.com",
     "author" : "Samantha",
     "userId": "62f1be564dfccaf5a0ba6e5f"
 }
