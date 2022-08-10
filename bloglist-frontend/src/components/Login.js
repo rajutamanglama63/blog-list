@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import loginService from "../services/login";
 
-const Login = ({ setMessage }) => {
+const Login = ({ setMessage, setUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState("");
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();

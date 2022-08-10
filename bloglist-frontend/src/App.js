@@ -7,6 +7,7 @@ import blogService from "./services/blogs";
 const App = () => {
   const [blogs, setBlogs] = useState([]);
   const [message, setMessage] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     blogService.getAll().then((blogs) => setBlogs(blogs));
@@ -15,11 +16,16 @@ const App = () => {
   return (
     <div>
       <Notification message={message} />
-      <Login setMessage={setMessage} />
-      <h2>blogs</h2>
-      {blogs.map((blog) => (
-        <Blog key={blog.id} blog={blog} />
-      ))}
+      {user === null ? (
+        <Login setMessage={setMessage} setUser={setUser} />
+      ) : (
+        <>
+          <h2>blogs</h2>
+          {blogs.map((blog) => (
+            <Blog key={blog.id} blog={blog} />
+          ))}
+        </>
+      )}
     </div>
   );
 };
