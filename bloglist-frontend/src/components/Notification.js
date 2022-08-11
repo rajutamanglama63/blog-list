@@ -10,7 +10,8 @@ const Notification = ({ message }) => {
     msgStyle = "green";
   } else if (
     message === "Invalid credentials" ||
-    message === "User does not exist."
+    message === "User does not exist." ||
+    message === "jwt must be provided"
   ) {
     msgStyle = "red";
   }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import loginService from "../services/login";
+import createService from "../services/createBlog";
 
 const Login = ({ setMessage, setUser }) => {
   const [username, setUsername] = useState("");
@@ -14,6 +15,7 @@ const Login = ({ setMessage, setUser }) => {
         username,
         password,
       });
+      createService.setToken(responsedUser.token);
       // console.log(responsedUser);
       setUser(responsedUser);
       setMessage("User logged in successfully.");

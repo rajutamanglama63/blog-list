@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import createService from "../services/createBlog";
 
-const CreateBlog = () => {
+const CreateBlog = ({ setMessage }) => {
   const [newBlog, setNewBlog] = useState({
     title: "",
     author: "",
     url: "",
   });
 
-  const createBlogHandler = (e) => {
+  const createBlogHandler = async (e) => {
     e.preventDefault();
     // console.log(
     //   "newly created blog is ",
@@ -15,6 +16,23 @@ const CreateBlog = () => {
     //   newBlog.author,
     //   newBlog.url
     // );
+
+    try {
+      const newlyCreatedBlog = await createService.createBlog(newBlog);
+
+      return newlyCreatedBlog;
+    } catch (error) {
+      // console.dir(error);
+      setMessage(error.response.data.err);
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      setNewBlog({
+        title: "",
+        author: "",
+        url: "",
+      });
+    }
   };
 
   return (
