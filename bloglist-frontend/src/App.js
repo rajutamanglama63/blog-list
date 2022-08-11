@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Blog from "./components/Blog";
+import CreateBlog from "./components/CreateBlog";
 import Login from "./components/Login";
 import Notification from "./components/Notification";
 import blogService from "./services/blogs";
@@ -24,6 +25,7 @@ const App = () => {
           {/* {blogs.map((blog) => (
             <Blog key={blog.id} blog={blog} user={user} />
           ))} */}
+          <CreateBlog />
           <Blog blogs={blogs} user={user} />
         </>
       )}
