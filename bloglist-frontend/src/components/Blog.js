@@ -3,15 +3,11 @@ const Blog = ({ blogs, user }) => (
     {/* {blog.title} {blog.author} */}
     <p>{user.name} logged in</p>
 
-    {/* <ul>
-      {user.blogs.map((blog) => (
-        <li key={blog.id}>blog</li>
-      ))}
-    </ul> */}
-
     <ul>
       {blogs.map((blog) => (
-        <li key={blog.id}>{blog.title}</li>
+        <li key={blog.id}>
+          {blog.title} {blog.author}
+        </li>
       ))}
     </ul>
   </div>

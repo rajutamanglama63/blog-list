@@ -30,14 +30,12 @@ loginRouter.post("/", async (req, res, next) => {
 
     const token = jwt.sign(userForToken, config.SECRET, { expiresIn: 60 * 60 });
 
-    res
-      .status(200)
-      .json({
-        token,
-        username: userExist.username,
-        name: userExist.name,
-        blogs: userExist.blogs,
-      });
+    res.status(200).json({
+      token,
+      username: userExist.username,
+      name: userExist.name,
+      blogs: userExist.blogs,
+    });
   } catch (error) {
     next(error);
   }
