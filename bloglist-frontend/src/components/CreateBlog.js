@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import createService from "../services/createBlog";
 
-const CreateBlog = ({ setMessage }) => {
+const CreateBlog = ({ setMessage, setBlogs, blogs }) => {
   const [newBlog, setNewBlog] = useState({
     title: "",
     author: "",
     url: "",
+    userId: "",
   });
 
   const createBlogHandler = async (e) => {
@@ -20,10 +21,12 @@ const CreateBlog = ({ setMessage }) => {
     try {
       const newlyCreatedBlog = await createService.createBlog(newBlog);
 
-      return newlyCreatedBlog;
+      console.log(newlyCreatedBlog);
+
+      setBlogs([...blogs, newlyCreatedBlog]);
     } catch (error) {
-      // console.dir(error);
-      setMessage(error.response.data.err);
+      console.dir(error);
+      // setMessage(error.response.data.err);
       setTimeout(() => {
         setMessage(null);
       }, 3000);
@@ -61,6 +64,14 @@ const CreateBlog = ({ setMessage }) => {
             type="text"
             value={newBlog.url}
             onChange={(e) => setNewBlog({ ...newBlog, url: e.target.value })}
+          />{" "}
+        </p>
+        <p>
+          userId:{" "}
+          <input
+            type="text"
+            value={newBlog.userId}
+            onChange={(e) => setNewBlog({ ...newBlog, userId: e.target.value })}
           />{" "}
         </p>
         <button type="submit">create</button>

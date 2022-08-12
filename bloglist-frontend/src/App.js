@@ -25,7 +25,11 @@ const App = () => {
           {/* {blogs.map((blog) => (
             <Blog key={blog.id} blog={blog} user={user} />
           ))} */}
-          <CreateBlog setMessage={setMessage} />
+          <CreateBlog
+            setMessage={setMessage}
+            setBlogs={setBlogs}
+            blogs={blogs}
+          />
           <Blog blogs={blogs} user={user} />
         </>
       )}
