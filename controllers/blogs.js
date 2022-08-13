@@ -51,21 +51,24 @@ blogsRouter.post("/", async (req, res, next) => {
 
     // const user = await User.findById(req.body.userId);
     const user = await User.findById(decodedUser.id);
+    if (!user) {
+      res.status(401).json({ error: "token missing or invalid" });
+    }
     console.log(user);
 
     if (!(req.body.title && req.body.url)) {
-      res.status(400).end();
+      res.status(400).json({ error: " title and url are required" });
     } else {
       const blog = new Blog({
         title: req.body.title,
         author: req.body.author,
         url: req.body.url,
         likes: req.body.likes,
-        user: user._id,
+        user: user.id,
       });
 
       const newBlog = await blog.save();
-      user.blogs.push(newBlog._id);
+      user.blogs = user.blogs.concat(newBlog.id);
       // console.log(user.blogs);
       await user.save();
 
