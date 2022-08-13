@@ -42,13 +42,16 @@ blogsRouter.post("/", async (req, res, next) => {
     }
 
     // const token = getTokenFrom(req);
-    const decodedToken = jwt.verify(req.token, config.SECRET);
+    const decodedUser = jwt.verify(req.user, config.SECRET);
 
-    if (!decodedToken.id) {
+    console.log(decodedUser);
+    if (!decodedUser.id) {
       return res.status(401).json({ error: "token missing or invalid" });
     }
 
-    const user = await User.findById(req.body.userId);
+    // const user = await User.findById(req.body.userId);
+    const user = await User.findById(decodedUser.id);
+    console.log(user);
 
     if (!(req.body.title && req.body.url)) {
       res.status(400).end();

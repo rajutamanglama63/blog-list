@@ -3,14 +3,13 @@ GET http://localhost:4000/api/blogs/
 ###
 POST http://localhost:4000/api/blogs/
 content-type: application/json
-authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbWFudGhhQDIzIiwiaWQiOiI2MmYxYmU1NjRkZmNjYWY1YTBiYTZlNWYiLCJpYXQiOjE2NjAyMzg0NTksImV4cCI6MTY2MDI0MjA1OX0.g1QOcs4UtsTqXPQhAPuFji2u5lBY8wYJ-FKOYtZkonY
+authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imthc3VtaUAyMyIsImlkIjoiNjJmNWM2YjgxNWEyOWYyMzA5OGJiZWIzIiwiaWF0IjoxNjYwMzk3OTUwLCJleHAiOjE2NjA0MDE1NTB9.hURO9HdzkhbBEiFS1jc3nmYUp1pYQZ75jqswaNgyZrw
 
 {
-    "title" : "Tech",
-    "likes" : 44,
-    "url": "tech.com",
-    "author" : "Samantha",
-    "userId": "62f1be564dfccaf5a0ba6e5f"
+    "title" : "Info system",
+    "likes" : 47,
+    "url": "info.com",
+    "author" : "Kasumi",
 }
 
 ###
@@ -28,8 +27,8 @@ POST http://localhost:4000/api/login/
 content-type: application/json
 
 {
-    "username" : "samantha@23",
-    "password" : "0980"
+    "username" : "kasumi@23",
+    "password" : "1234"
 }
 
 
