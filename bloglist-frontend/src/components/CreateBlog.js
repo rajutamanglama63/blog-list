@@ -6,7 +6,6 @@ const CreateBlog = ({ setMessage, setBlogs, blogs }) => {
     title: "",
     author: "",
     url: "",
-    userId: "",
   });
 
   const createBlogHandler = async (e) => {
@@ -24,17 +23,17 @@ const CreateBlog = ({ setMessage, setBlogs, blogs }) => {
       console.log(newlyCreatedBlog);
 
       setBlogs([...blogs, newlyCreatedBlog]);
+      setNewBlog({
+        title: "",
+        author: "",
+        url: "",
+      });
     } catch (error) {
       console.dir(error);
       // setMessage(error.response.data.err);
       setTimeout(() => {
         setMessage(null);
       }, 3000);
-      setNewBlog({
-        title: "",
-        author: "",
-        url: "",
-      });
     }
   };
 
@@ -64,14 +63,6 @@ const CreateBlog = ({ setMessage, setBlogs, blogs }) => {
             type="text"
             value={newBlog.url}
             onChange={(e) => setNewBlog({ ...newBlog, url: e.target.value })}
-          />{" "}
-        </p>
-        <p>
-          userId:{" "}
-          <input
-            type="text"
-            value={newBlog.userId}
-            onChange={(e) => setNewBlog({ ...newBlog, userId: e.target.value })}
           />{" "}
         </p>
         <button type="submit">create</button>

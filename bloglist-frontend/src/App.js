@@ -3,6 +3,7 @@ import Blog from "./components/Blog";
 import CreateBlog from "./components/CreateBlog";
 import Login from "./components/Login";
 import Notification from "./components/Notification";
+import Toggleable from "./components/Toggleable";
 import blogService from "./services/blogs";
 
 const App = () => {
@@ -18,7 +19,11 @@ const App = () => {
     <div>
       <Notification message={message} />
       {user === null ? (
-        <Login setMessage={setMessage} setUser={setUser} />
+        // <Login setMessage={setMessage} setUser={setUser} />
+
+        <Toggleable btnLabel="login">
+          <Login setMessage={setMessage} setUser={setUser} />
+        </Toggleable>
       ) : (
         <>
           <h2>blogs</h2>
