@@ -33,7 +33,7 @@ const App = () => {
           {/* {blogs.map((blog) => (
             <Blog key={blog.id} blog={blog} user={user} />
           ))} */}
-          <Toggleable btnLabel="new blog">
+          <Toggleable btnLabel="new blog" ref={blogFormRef}>
             <CreateBlog
               setMessage={setMessage}
               setBlogs={setBlogs}
