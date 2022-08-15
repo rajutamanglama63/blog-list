@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import createService from "../services/createBlog";
 
-const CreateBlog = ({ setMessage, setBlogs, blogs }) => {
+const CreateBlog = ({ setMessage, setBlogs, blogs, blogFormRef }) => {
   const [newBlog, setNewBlog] = useState({
     title: "",
     author: "",
@@ -28,6 +28,7 @@ const CreateBlog = ({ setMessage, setBlogs, blogs }) => {
         author: "",
         url: "",
       });
+      blogFormRef.current.toggleVisibility();
     } catch (error) {
       console.dir(error);
       // setMessage(error.response.data.err);
