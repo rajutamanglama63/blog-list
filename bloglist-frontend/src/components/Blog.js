@@ -1,7 +1,6 @@
-const Blog = ({ blogs, user }) => (
+const Blog = ({ blogs }) => (
   <div>
     {/* {blog.title} {blog.author} */}
-    <p>{user.name} logged in</p>
 
     <ul>
       {blogs.map((blog) => (
