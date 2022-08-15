@@ -4,7 +4,7 @@ const Blog = ({ blogs }) => (
 
     <ul>
       {blogs.map((blog) => (
-        <li key={blog.id}>
+        <li key={blog.id} style={{ listStyle: "none" }}>
           {blog.title} {blog.author}
         </li>
       ))}
