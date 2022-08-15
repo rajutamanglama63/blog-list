@@ -37,8 +37,8 @@ const App = () => {
               setBlogs={setBlogs}
               blogs={blogs}
             />
-            <Blog blogs={blogs} />
           </Toggleable>
+          <Blog blogs={blogs} />
         </>
       )}
     </div>

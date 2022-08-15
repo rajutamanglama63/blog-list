@@ -2,13 +2,19 @@ const Blog = ({ blogs }) => (
   <div>
     {/* {blog.title} {blog.author} */}
 
-    <ul>
+    {/* <ul>
       {blogs.map((blog) => (
-        <li key={blog.id} style={{ listStyle: "none" }}>
+        <li key={blog.id} style={{ listStyle: "none", marginLeft: 0 }}>
           {blog.title} {blog.author}
         </li>
       ))}
-    </ul>
+    </ul> */}
+
+    {blogs.map((blog) => (
+      <p key={blog.id}>
+        {blog.title} {blog.author}
+      </p>
+    ))}
   </div>
 );
 
