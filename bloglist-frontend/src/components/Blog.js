@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-const Blog = ({ blogs }) => {
+const Blog = ({ blog }) => {
+  const blogStyle = {
+    paddingTop: 10,
+    paddingLeft: 2,
+    border: "solid",
+    borderWidth: 1,
+    marginBottom: 5,
+  };
   const [detail, setDetail] = useState(false);
 
   const toggleDetail = () => {
@@ -8,24 +15,24 @@ const Blog = ({ blogs }) => {
   };
 
   return (
-    <div>
-      {/* {blog.title} {blog.author} */}
-
-      {/* <ul>
-        {blogs.map((blog) => (
-          <li key={blog.id} style={{ listStyle: "none", marginLeft: 0 }}>
-            {blog.title} {blog.author}
-          </li>
-        ))}
-      </ul> */}
-
-      {blogs.map((blog) => (
-        <p key={blog.id}>
-          {blog.title} {blog.author}
-          <button onClick={toggleDetail}>{!detail ? "view" : "hide"}</button>
-        </p>
-      ))}
-    </div>
+    <>
+      {!detail ? (
+        <div style={blogStyle}>
+          {blog.title} {blog.author}{" "}
+          <button onClick={toggleDetail}>view</button>
+        </div>
+      ) : (
+        <div style={blogStyle}>
+          {blog.title} <button onClick={toggleDetail}>hide</button>
+          <div>{blog.url}</div>
+          <div>
+            likes:{blog.likes}{" "}
+            {/* <button onClick={() => increaseLike(blog.id)}>like</button> */}
+          </div>
+          <div>{blog.author}</div>
+        </div>
+      )}
+    </>
   );
 };
 
