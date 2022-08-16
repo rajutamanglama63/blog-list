@@ -1,21 +1,31 @@
-const Blog = ({ blogs }) => (
-  <div>
-    {/* {blog.title} {blog.author} */}
+import { useState } from "react";
 
-    {/* <ul>
+const Blog = ({ blogs }) => {
+  const [detail, setDetail] = useState(false);
+
+  const toggleDetail = () => {
+    setDetail(!detail);
+  };
+
+  return (
+    <div>
+      {/* {blog.title} {blog.author} */}
+
+      {/* <ul>
+        {blogs.map((blog) => (
+          <li key={blog.id} style={{ listStyle: "none", marginLeft: 0 }}>
+            {blog.title} {blog.author}
+          </li>
+        ))}
+      </ul> */}
+
       {blogs.map((blog) => (
-        <li key={blog.id} style={{ listStyle: "none", marginLeft: 0 }}>
-          {blog.title} {blog.author}
-        </li>
+        <p key={blog.id}>
+          {blog.title} {blog.author} <button>view</button>
+        </p>
       ))}
-    </ul> */}
-
-    {blogs.map((blog) => (
-      <p key={blog.id}>
-        {blog.title} {blog.author}
-      </p>
-    ))}
-  </div>
-);
+    </div>
+  );
+};
 
 export default Blog;
