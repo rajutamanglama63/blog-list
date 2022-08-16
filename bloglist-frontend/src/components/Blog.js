@@ -21,7 +21,8 @@ const Blog = ({ blogs }) => {
 
       {blogs.map((blog) => (
         <p key={blog.id}>
-          {blog.title} {blog.author} <button>view</button>
+          {blog.title} {blog.author}
+          <button onClick={toggleDetail}>{!detail ? "view" : "hide"}</button>
         </p>
       ))}
     </div>
