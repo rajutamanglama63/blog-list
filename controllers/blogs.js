@@ -25,6 +25,18 @@ blogsRouter.get("/", async (req, res, next) => {
   }
 });
 
+blogsRouter.get("/:id", async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    const blogDetail = await Blog.findById(id);
+
+    res.status(200).json(blogDetail);
+  } catch (error) {
+    next(error);
+  }
+});
+
 // GETTING TOKEN FOR AUTHORIZATION
 // const getTokenFrom = (req, res) => {
 //   const authorization = req.get("authorization");
