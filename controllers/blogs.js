@@ -94,11 +94,21 @@ blogsRouter.post("/", async (req, res, next) => {
 blogsRouter.put("/:id", async (req, res, next) => {
   const id = req.params.id;
 
+  const decodedUser = jwt.verify(req.user, config.SECRET);
+  if (!decodedUser.id) {
+    return res.status(401).json({ error: "token missing or invalid" });
+  }
+
+  const user = await User.findById(decodedUser.id);
+  if (!user) {
+    return res.status(401).json({ error: "token missing or invalid" });
+  }
   const newBlogPost = {
     title: req.body.title,
     author: req.body.author,
     url: req.body.url,
     likes: req.body.likes,
+    user: user.id,
   };
 
   const updatedBlogPost = await Blog.findByIdAndUpdate(id, newBlogPost, {
