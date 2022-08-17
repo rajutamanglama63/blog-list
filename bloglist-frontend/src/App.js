@@ -14,8 +14,18 @@ const App = () => {
   const blogFormRef = useRef();
 
   useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem("loggedInUser");
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      setUser(user);
+    }
     blogService.getAll().then((blogs) => setBlogs(blogs));
   }, []);
+
+  const loggoutHandler = () => {
+    window.localStorage.removeItem("loggedInUser");
+    setUser(null);
+  };
 
   return (
     <div>
@@ -29,7 +39,10 @@ const App = () => {
       ) : (
         <>
           <h2>blogs</h2>
-          <p>{user.name} logged in</p>
+          <p>
+            {user.name} logged in{" "}
+            <button onClick={loggoutHandler}>logout</button>{" "}
+          </p>
 
           <Toggleable btnLabel="new blog" ref={blogFormRef}>
             <CreateBlog

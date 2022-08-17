@@ -32,9 +32,9 @@ const Blog = ({ blog, setMessage, setBlogs, blogs }) => {
         blogs.map((eachBlog) => (eachBlog.id === id ? response : eachBlog))
       );
     } catch (error) {
-      // console.log(error)
+      // console.dir(error);
 
-      setMessage(error.response.data.error);
+      setMessage(error.response.data.err);
 
       setTimeout(() => {
         setMessage(null);

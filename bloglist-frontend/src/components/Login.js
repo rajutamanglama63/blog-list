@@ -15,7 +15,12 @@ const Login = ({ setMessage, setUser }) => {
         username,
         password,
       });
-      createService.setToken(responsedUser.token);
+
+      window.localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify(responsedUser)
+      );
+      // createService.setToken(responsedUser.token);
       // console.log(responsedUser);
       setUser(responsedUser);
       setMessage("User logged in successfully.");
@@ -32,6 +37,7 @@ const Login = ({ setMessage, setUser }) => {
       }, 3000);
     }
   };
+
   return (
     <div>
       <h1>Log in to application</h1>
