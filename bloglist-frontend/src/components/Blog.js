@@ -1,6 +1,7 @@
 import { useState } from "react";
+import blogServices from "../services/blogs";
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, setMessage, setBlogs, blogs }) => {
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -12,6 +13,33 @@ const Blog = ({ blog }) => {
 
   const toggleDetail = () => {
     setDetail(!detail);
+  };
+
+  const Like = async (id) => {
+    try {
+      const blogToBeUpdate = blog.id;
+
+      const newBlog = {
+        likes: blogToBeUpdate.likes + 1,
+        author: blogToBeUpdate.author,
+        title: blogToBeUpdate.title,
+        url: blogToBeUpdate.url,
+      };
+
+      const response = await blogServices.updateBlog(id, newBlog);
+
+      setBlogs(
+        blogs.map((eachBlog) => (eachBlog.id === id ? response : eachBlog))
+      );
+    } catch (error) {
+      // console.log(error)
+
+      setMessage(error.response.data.error);
+
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    }
   };
 
   return (
@@ -27,7 +55,7 @@ const Blog = ({ blog }) => {
           <div>{blog.url}</div>
           <div>
             likes:{blog.likes}{" "}
-            {/* <button onClick={() => increaseLike(blog.id)}>like</button> */}
+            <button onClick={() => Like(blog.id)}>like</button>
           </div>
           <div>{blog.author}</div>
         </div>

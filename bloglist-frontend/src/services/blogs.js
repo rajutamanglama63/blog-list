@@ -12,8 +12,13 @@ const getBlogDetail = (id) => {
   return request.then((response) => response.data);
 };
 
-const updateBlog = (id) => {
-  const request = axios.put(`baseUrl/${id}`);
+const updateBlog = (id, newBlog) => {
+  const token = JSON.parse(window.localStorage.getItem("loggedInUser")).token;
+
+  const config = {
+    headers: { Authorization: `bearer ${token}` },
+  };
+  const request = axios.put(`baseUrl/${id}`, newBlog, config);
 
   return request.then((response) => response.data);
 };

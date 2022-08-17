@@ -41,7 +41,13 @@ const App = () => {
           </Toggleable>
           {/* <Blog blogs={blogs} /> */}
           {blogs.map((blog) => (
-            <Blog key={blog.id} blog={blog} />
+            <Blog
+              key={blog.id}
+              blog={blog}
+              setMessage={setMessage}
+              setBlogs={setBlogs}
+              blogs={blogs}
+            />
           ))}
         </>
       )}
