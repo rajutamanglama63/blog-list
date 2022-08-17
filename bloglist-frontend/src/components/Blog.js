@@ -17,10 +17,11 @@ const Blog = ({ blog, setMessage, setBlogs, blogs }) => {
 
   const Like = async (id) => {
     try {
-      const blogToBeUpdate = blog.id;
+      const blogToBeUpdate = blogs.find((blg) => blg.id === id);
+      // console.log(blogToBeUpdate);
 
       const newBlog = {
-        likes: blogToBeUpdate.likes + 1,
+        likes: blog.likes + 1,
         author: blogToBeUpdate.author,
         title: blogToBeUpdate.title,
         url: blogToBeUpdate.url,

@@ -6,21 +6,15 @@ const getAll = () => {
   return request.then((response) => response.data);
 };
 
-const getBlogDetail = (id) => {
-  const request = axios.get(`baseUrl/${id}`);
-
-  return request.then((response) => response.data);
-};
-
 const updateBlog = (id, newBlog) => {
   const token = JSON.parse(window.localStorage.getItem("loggedInUser")).token;
 
   const config = {
     headers: { Authorization: `bearer ${token}` },
   };
-  const request = axios.put(`baseUrl/${id}`, newBlog, config);
+  const request = axios.put(`${baseUrl}/${id}`, newBlog, config);
 
   return request.then((response) => response.data);
 };
 
-export default { getAll, getBlogDetail, updateBlog };
+export default { getAll, updateBlog };
