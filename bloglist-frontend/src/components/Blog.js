@@ -1,8 +1,8 @@
 import { useState } from "react";
 import blogServices from "../services/blogs";
 
-const Blog = ({ blog, setMessage, setBlogs, blogs }) => {
-  // console.log(blog);
+const Blog = ({ blog, setMessage, setBlogs, blogs, user }) => {
+  // console.log(user);
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -52,16 +52,21 @@ const Blog = ({ blog, setMessage, setBlogs, blogs }) => {
           <button onClick={toggleDetail}>view</button>
         </div>
       ) : (
-        <div style={blogStyle}>
-          {blog.title} {blog.author}{" "}
-          <button onClick={toggleDetail}>hide</button>
-          <div>{blog.url}</div>
-          <div>
-            likes:{blog.likes}{" "}
-            <button onClick={() => Like(blog.id)}>like</button>
+        <>
+          <div style={blogStyle}>
+            {blog.title} {blog.author}{" "}
+            <button onClick={toggleDetail}>hide</button>
+            <div>{blog.url}</div>
+            <div>
+              likes:{blog.likes}{" "}
+              <button onClick={() => Like(blog.id)}>like</button>
+            </div>
+            <div>{blog.user.username}</div>
+            {user.name === blog.user.name ? (
+              <button style={{ backgroundColor: "red" }}>delete</button>
+            ) : null}
           </div>
-          <div>{blog.user.username}</div>
-        </div>
+        </>
       )}
     </>
   );
