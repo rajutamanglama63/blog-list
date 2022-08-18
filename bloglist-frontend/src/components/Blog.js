@@ -2,6 +2,7 @@ import { useState } from "react";
 import blogServices from "../services/blogs";
 
 const Blog = ({ blog, setMessage, setBlogs, blogs }) => {
+  // console.log(blog);
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -52,13 +53,14 @@ const Blog = ({ blog, setMessage, setBlogs, blogs }) => {
         </div>
       ) : (
         <div style={blogStyle}>
-          {blog.title} <button onClick={toggleDetail}>hide</button>
+          {blog.title} {blog.author}{" "}
+          <button onClick={toggleDetail}>hide</button>
           <div>{blog.url}</div>
           <div>
             likes:{blog.likes}{" "}
             <button onClick={() => Like(blog.id)}>like</button>
           </div>
-          <div>{blog.author}</div>
+          <div>{blog.user.username}</div>
         </div>
       )}
     </>
