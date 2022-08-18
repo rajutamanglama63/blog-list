@@ -17,4 +17,16 @@ const updateBlog = (id, newBlog) => {
   return request.then((response) => response.data);
 };
 
-export default { getAll, updateBlog };
+const deleteBlog = (id) => {
+  const token = JSON.parse(window.localStorage.getItem("loggedInUser")).token;
+
+  const config = {
+    headers: { Authorization: `bearer ${token}` },
+  };
+
+  const request = axios.delete(`${baseUrl}/${id}`, config);
+
+  return request.then((response) => response.data);
+};
+
+export default { getAll, updateBlog, deleteBlog };

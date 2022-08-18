@@ -44,6 +44,23 @@ const Blog = ({ blog, setMessage, setBlogs, blogs, user }) => {
     }
   };
 
+  const Delete = async (id) => {
+    const blogToDelete = blogs.find((blg) => blg.id === id);
+    const confirmed = window.confirm(
+      `Remove blog ${blogToDelete.title} by ${blogToDelete.author}?`
+    );
+
+    if (confirmed) {
+      await blogServices.deleteBlog(id);
+      setBlogs(blogs.filter((blog) => blog.id !== id));
+    }
+
+    setMessage("Successfully deleted.");
+    setTimeout(() => {
+      setMessage(null);
+    }, 3000);
+  };
+
   return (
     <>
       {!detail ? (
@@ -63,7 +80,12 @@ const Blog = ({ blog, setMessage, setBlogs, blogs, user }) => {
             </div>
             <div>{blog.user.username}</div>
             {user.name === blog.user.name ? (
-              <button style={{ backgroundColor: "red" }}>delete</button>
+              <button
+                onClick={() => Delete(blog.id)}
+                style={{ backgroundColor: "red" }}
+              >
+                delete
+              </button>
             ) : null}
           </div>
         </>

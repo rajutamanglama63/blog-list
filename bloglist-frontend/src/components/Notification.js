@@ -6,7 +6,10 @@ const Notification = ({ message }) => {
     return null;
   }
 
-  if (message === "User logged in successfully.") {
+  if (
+    message === "User logged in successfully." ||
+    message === "Successfully deleted."
+  ) {
     msgStyle = "green";
   } else if (
     message === "Invalid credentials" ||
