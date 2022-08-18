@@ -64,13 +64,13 @@ const Blog = ({ blog, setMessage, setBlogs, blogs, user }) => {
   return (
     <>
       {!detail ? (
-        <div style={blogStyle}>
+        <div className="blog" style={blogStyle}>
           {blog.title} {blog.author}{" "}
           <button onClick={toggleDetail}>view</button>
         </div>
       ) : (
         <>
-          <div style={blogStyle}>
+          <div className="blog" style={blogStyle}>
             {blog.title} {blog.author}{" "}
             <button onClick={toggleDetail}>hide</button>
             <div>{blog.url}</div>
