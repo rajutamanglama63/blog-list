@@ -27,6 +27,7 @@ const App = () => {
     setUser(null);
   };
 
+  const sortedBlogs = blogs.sort((x, y) => y.likes - x.likes);
   return (
     <div>
       <Notification message={message} />
@@ -53,7 +54,7 @@ const App = () => {
             />
           </Toggleable>
           {/* <Blog blogs={blogs} /> */}
-          {blogs.map((blog) => (
+          {sortedBlogs.map((blog) => (
             <Blog
               key={blog.id}
               blog={blog}
