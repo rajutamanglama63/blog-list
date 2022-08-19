@@ -66,15 +66,17 @@ const Blog = ({ blog, setMessage, setBlogs, blogs, user }) => {
       {!detail ? (
         <div className="blog" style={blogStyle}>
           {blog.title} {blog.author}{" "}
-          <button onClick={toggleDetail}>view</button>
+          <button className="show" onClick={toggleDetail}>
+            view
+          </button>
         </div>
       ) : (
         <>
           <div className="blog" style={blogStyle}>
             {blog.title} {blog.author}{" "}
             <button onClick={toggleDetail}>hide</button>
-            <div>{blog.url}</div>
-            <div>
+            <div className="url">{blog.url}</div>
+            <div className="likes">
               likes:{blog.likes}{" "}
               <button onClick={() => Like(blog.id)}>like</button>
             </div>
