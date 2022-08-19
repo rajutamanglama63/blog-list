@@ -28,6 +28,7 @@ const App = () => {
   };
 
   const sortedBlogs = blogs.sort((x, y) => y.likes - x.likes);
+
   return (
     <div>
       <Notification message={message} />

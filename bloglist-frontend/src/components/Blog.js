@@ -78,7 +78,9 @@ const Blog = ({ blog, setMessage, setBlogs, blogs, user }) => {
             <div className="url">{blog.url}</div>
             <div className="likes">
               likes:{blog.likes}{" "}
-              <button onClick={() => Like(blog.id)}>like</button>
+              <button className="likeBtn" onClick={() => Like(blog.id)}>
+                like
+              </button>
             </div>
             <div>{blog.user.username}</div>
             {user.name === blog.user.name ? (

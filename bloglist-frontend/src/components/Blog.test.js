@@ -57,3 +57,42 @@ test("clicking the button renders url and likes", async () => {
   expect(url).toHaveTextContent("http://blogSite.com/");
   expect(likes).toHaveTextContent("likes:0");
 });
+
+// test("clicking the like button twice increase it's count by twice", async () => {
+//   const blog = {
+//     title: "title of the blog",
+//     author: "author of the blog",
+//     url: "http://blogSite.com/",
+//     likes: 0,
+//     user: {
+//       username: "John@23",
+//       name: "John Doe",
+//       id: "asdg8g8920dllldki90e",
+//     },
+//   };
+
+//   const User = {
+//     username: "John@23",
+//     name: "John Doe",
+//     id: "asdg8g8920dllldki90e",
+//   };
+
+//   const mockHandler = jest.fn();
+
+//   const { container } = render(
+//     <Blog blog={blog} user={User} />
+//   );
+
+//   const user = userEvent.setup();
+
+//   const button = container.querySelector(".show");
+
+//   await user.click(button);
+
+//   const likeBtn = container.querySelector(".likeBtn");
+
+//   await user.click(likeBtn);
+//   await user.click(likeBtn);
+
+//   expect(mockHandler.mock.calls).toHaveLength(2);
+// });
