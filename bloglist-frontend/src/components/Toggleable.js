@@ -38,6 +38,6 @@ Toggleable.propTypes = {
   btnLabel: PropTypes.string.isRequired,
 };
 
-Togglable.displayName = "Togglable";
+Toggleable.displayName = "Toggleable";
 
 export default Toggleable;
