@@ -72,7 +72,9 @@ const CreateBlog = ({ setMessage, setBlogs, blogs, blogFormRef }) => {
             onChange={(e) => setNewBlog({ ...newBlog, url: e.target.value })}
           />{" "}
         </p>
-        <button type="submit">create</button>
+        <button id="create" type="submit">
+          create
+        </button>
       </form>
     </div>
   );

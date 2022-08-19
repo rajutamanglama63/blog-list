@@ -10,7 +10,10 @@ describe("Blog app", function () {
       username: "raju@23",
       password: "1234",
     };
-    cy.request("POST", "http://localhost:4000/api/users/", user);
+
+    cy.request("POST", "http://localhost:4000/api/users/", user).then((res) => {
+      console.log(res.body);
+    });
     cy.visit("http://localhost:3000");
   });
 
@@ -50,6 +53,30 @@ describe("Blog app", function () {
       cy.get("#url").type("http://randomsite.com");
       cy.contains("create").click();
       cy.contains("a blog created by cypress");
+    });
+
+    it("user can like a blog", function () {
+      cy.contains("new blog").click();
+      cy.get("#title").type("how to create a blog");
+      cy.get("#author").type("Jonny");
+      cy.get("#url").type("blog@23.com");
+      cy.get("#create").click();
+
+      cy.contains("view").click();
+      cy.contains("like").click();
+      cy.contains("1");
+    });
+
+    it("user can delete a blog", function () {
+      cy.contains("new blog").click();
+      cy.get("#title").type("how to create a blog");
+      cy.get("#author").type("Jonny");
+      cy.get("#url").type("blog@23.com");
+      cy.get("#create").click();
+
+      cy.contains("view").click();
+      //   cy.contains("delete").click();
+      //   cy.contains("how to create a blog").should("not.exist");
     });
   });
 });
