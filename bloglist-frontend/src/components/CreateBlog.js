@@ -46,6 +46,7 @@ const CreateBlog = ({ setMessage, setBlogs, blogs, blogFormRef }) => {
           title:{" "}
           <input
             type="text"
+            id="title"
             placeholder="title"
             value={newBlog.title}
             onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })}
@@ -55,6 +56,7 @@ const CreateBlog = ({ setMessage, setBlogs, blogs, blogFormRef }) => {
           author:{" "}
           <input
             type="text"
+            id="author"
             placeholder="author"
             value={newBlog.author}
             onChange={(e) => setNewBlog({ ...newBlog, author: e.target.value })}
@@ -64,6 +66,7 @@ const CreateBlog = ({ setMessage, setBlogs, blogs, blogFormRef }) => {
           url:{" "}
           <input
             type="text"
+            id="url"
             placeholder="url"
             value={newBlog.url}
             onChange={(e) => setNewBlog({ ...newBlog, url: e.target.value })}
